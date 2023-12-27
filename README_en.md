@@ -1,14 +1,15 @@
 ![mosaic.jpg](media/mosaic.jpg)
+
 ## DarkNet_ChineseTrading - A crawler for real-time monitoring of the dark network website.
+
 ![](https://img.shields.io/badge/language-python3-orange.svg)
 ![](https://img.shields.io/badge/platform-mac|lunix|window-orange.svg)
 
 > [Tutorial: How to Implement Dark Net Transaction Monitoring] (https://mp.weixin.qq.com/s/OaPjAaNcEefQxaXQykheqg)
 
 ## Monitor screen(by grafana)
+
 ![](media/grafana.png)
-
-
 
 ## Features
 
@@ -21,81 +22,26 @@
 - Event reminder（telegram）[Graphic with Photo]
 - Nude Image Filter
 - EXIF GPS Detect
+- New Capcha Solution [ddddocr](https://github.com/sml2h3/ddddocr)
 
 join us：[https://t.me/fordarknetspiderbot](https://t.me/fordarknetspiderbot)
 
-## Install(Mac)
+## Use
 
-- ### python env config
-
-	download and install the integrated environment , **anaconda 3.5** ,and then install the required pkg
-
-	```
-	pip install -r ./requirements.txt
-	pip install -U 'requests[socks]'
-	```
-	
-- ### install tor 
-	
-	```
-	brew install tor
-	
-	cd /usr/local/etc/tor
-	cp torrc.sample ./torrc
-	vi torrc
-	```
-	Add the following to configure **```torrc```** and run the command **```restart_tor.sh```** to restart the tor
-	
-	```
-	SOCKSPort 9150 					# socks5 proxy address
-	Socks5Proxy 127.0.0.1:1086 		# shadowsocks proxy(if you are in China)
-	RunAsDaemon 1 					# running in the background
-	ControlPort 9151 				# open control port
-	
-	```
-	
-- ### Storage
-
-	install **```Docker```** with **```Redis```** **```Mysql```**
-
-- ### Run
-	configure the connection in ```config_dev.py```and```TelegramRobotToken```
-
-	```
-	mv config_dev.py config.py
-	bash restart_task.sh
-	python run.py
-	```
-
-- ### OCR(mac)
-
-	![](media/captcha.png)
-
-	```
-	brew install tesseract
-	```
-
-	[snum.traineddata](media/snum.traineddata)
-	
-- ### Running logic
-	
-	![](media/DarkNet.png)
-	
-- ### Result screenshot
-
-	- #### telegram
-		
-		![](media/newtg.png)
-		
-	- #### ```run.py```
-	
-		![](media/run.png)
-	
-	
-	
-	
-	
-	
+- you can test it on [https://ide.goorm.io/](https://ide.goorm.io/)
+- telegram configure is necessary at [.env.default](.env.default)
+- prepare `docker` or `podman` and `docker-compose`
 
 
+```bash
+git clone https://github.com/s045pd/DarkNet_ChineseTrading.git
+cd DarkNet_ChineseTrading
+docker-compose build --pull && docker-compose --env-file .env.default up
+```
 
+<img width="1427" alt="Pasted Graphic 1" src="https://user-images.githubusercontent.com/22721729/130713991-17897b03-ddea-4c53-aff7-976fc13fc90e.png">
+
+## TODO
+
+- Host Socks5 Proxy
+- Grafana Page
